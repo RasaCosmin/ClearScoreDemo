@@ -8,6 +8,10 @@ import io.reactivex.Observable
 /**
  * Created by Rasa Cosmin on 15.05.2018.
  */
+
+/**
+ * Interface that defines others interfaces used for MVP
+ */
 interface DashboardContract {
     interface DashboardView{
         fun showWaiting()

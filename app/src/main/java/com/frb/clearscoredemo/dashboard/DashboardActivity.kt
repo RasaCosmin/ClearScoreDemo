@@ -6,6 +6,9 @@ import android.view.View
 import com.frb.clearscoredemo.R
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * Implementation of the Dashboard View
+ */
 class DashboardActivity : AppCompatActivity(), DashboardContract.DashboardView {
 
     lateinit var dashboardPresenter: DashboardContract.DashboardPresenter
@@ -21,6 +24,9 @@ class DashboardActivity : AppCompatActivity(), DashboardContract.DashboardView {
         retry_btn.performClick()
     }
 
+    /**
+     * Show waiting progress and hide score views
+     */
     override fun showWaiting() {
         creditScoreVisibility(false)
         retry_btn.visibility = View.GONE
@@ -28,6 +34,9 @@ class DashboardActivity : AppCompatActivity(), DashboardContract.DashboardView {
         progress_bar.visibility = View.VISIBLE
     }
 
+    /**
+     * Hide waiting progress and show score views
+     */
     override fun hideWaiting() {
         creditScoreVisibility(true)
         retry_btn.visibility = View.GONE
@@ -35,6 +44,10 @@ class DashboardActivity : AppCompatActivity(), DashboardContract.DashboardView {
         progress_bar.visibility = View.GONE
     }
 
+    /**
+     * Show or hide score views
+     * @param showScore
+     */
     private fun creditScoreVisibility(showScore: Boolean) {
 
         val visible = if (showScore)
@@ -47,11 +60,18 @@ class DashboardActivity : AppCompatActivity(), DashboardContract.DashboardView {
         credit_score_top_message.visibility = visible
     }
 
+    /**
+     * On receive score info update the progress bar and set the text
+     * @param scoreValue received score
+     */
     override fun setCreditScore(scoreValue: Int) {
         score_progress_bar.progress = scoreValue
         score.text = scoreValue.toString()
     }
 
+    /**
+     * Show the error that occurs while the api request is made and activate an retry button
+     */
     override fun showError(errorMsg: String?) {
         creditScoreVisibility(false)
         progress_bar.visibility = View.GONE

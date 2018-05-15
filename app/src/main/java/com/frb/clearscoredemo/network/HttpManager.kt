@@ -7,6 +7,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * Created by Rasa Cosmin on 15.05.2018.
  */
+/**
+ * Singleton class for Retrofit init
+ */
 object HttpManager{
 
     var apiRequest : ApiRequest = Retrofit.Builder()
